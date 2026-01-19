@@ -11,7 +11,7 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "https://696eb677f2ed85b5d0f0d99e--eclectic-custard-0f3ec0.netlify.app",
+      "https://696ebacf5d6b7cc049ddede6--eclectic-custard-0f3ec0.netlify.app",
     ],
   })
 );
