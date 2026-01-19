@@ -6,7 +6,14 @@ import cors from "cors";
 dotenv.config();
 
 const app = express();
-app.use(cors({ origin: "http://localhost:5173" }));
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://696e959ff6c19376cf209d9a--eclectic-custard-0f3ec0.netlify.app/",
+    ],
+  })
+);
 app.use(express.json());
 app.use("/api/notes", notesRoutes);
 const PORT = process.env.PORT || 3001;
