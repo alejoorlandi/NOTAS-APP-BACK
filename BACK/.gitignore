@@ -1,0 +1,40 @@
+# achivos del sistema
+.DS_Store
+Thumbs.db
+
+#entornos de desarrollo
+node_modules/
+.env
+.env.local
+*.env*
+
+#logs
+*.log
+npm.debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+#editor/IDE
+.vscode/
+.idea/
+
+# arcchivos de compilacion
+dist/
+build/
+*.tmp
+
+#dependencias y paquetes
+package-lock.json
+yarn.lock
+
+# archivos de prueba
+coverage/
+*.junit
+*.xml
+
+# miscelaneos
+*.swp
+*.swo
+
+# archivos http
+*.http

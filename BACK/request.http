@@ -9,7 +9,7 @@ Content-Type: application/json
 
 {
     "title": "nota creada desde el backend",
-    "description": "nota creada desde el backend"
+    "description": "descripcion de la nota creada desde el backend"
 }
 
 ###
