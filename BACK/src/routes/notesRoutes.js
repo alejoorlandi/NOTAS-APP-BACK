@@ -29,13 +29,24 @@ router.get("/:id", async (req, res) => {
 // Crear una nueva nota
 router.post("/", async (req, res) => {
   try {
-    const { title, description } = req.body;
-    const note = new Note({ title, description });
+    const { title, description, priority } = req.body;
+
+    // Validación básica
+    if (!title || !description) {
+      return res.status(400).json({ error: "El título y la descripción son obligatorios" });
+    }
+
+    const note = new Note({
+      title,
+      description,
+      priority: priority || "low"
+    });
+
     const savedNote = await note.save();
     if (savedNote) {
       res
         .status(201)
-        .json({ message: "Note creada correctamente", note: savedNote });
+        .json({ message: "Nota creada correctamente", note: savedNote });
     }
   } catch (error) {
     console.error("Error al crear la nota", error);
@@ -61,16 +72,22 @@ router.delete("/:id", async (req, res) => {
 router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
-    const { title, description } = req.body;
+    const { title, description, priority, isCompleted } = req.body;
+
+    // Validación básica si se envían datos
+    if (title === "" || description === "") {
+      return res.status(400).json({ error: "El título y la descripción no pueden estar vacíos" });
+    }
+
     const updatedNote = await Note.findByIdAndUpdate(
       id,
-      { title, description },
+      { title, description, priority, isCompleted },
       { new: true }
     );
     if (!updatedNote)
       return res
         .status(404)
-        .json({ error: "Note no actualizada correctamente" });
+        .json({ error: "Nota no encontrada" });
     res
       .status(200)
       .json({ message: "Nota actualizada correctamente", note: updatedNote });
